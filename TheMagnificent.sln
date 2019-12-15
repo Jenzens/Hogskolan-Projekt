@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2048
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheMagnificentPresentation", "TheMagnificentPresentation\TheMagnificentPresentation.csproj", "{E6B24304-7E48-45A4-8CF3-A78B7B0A7C04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheMagnificentModels", "TheMagnificentModels\TheMagnificentModels.csproj", "{DAC1AA06-483E-4412-94CA-CF695F637B7C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{73ED1269-801D-4AFE-AD85-C74844089520}"
+	ProjectSection(SolutionItems) = preProject
+		.tfignore = .tfignore
+		NuGet.config = NuGet.config
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E6B24304-7E48-45A4-8CF3-A78B7B0A7C04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6B24304-7E48-45A4-8CF3-A78B7B0A7C04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6B24304-7E48-45A4-8CF3-A78B7B0A7C04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6B24304-7E48-45A4-8CF3-A78B7B0A7C04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAC1AA06-483E-4412-94CA-CF695F637B7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAC1AA06-483E-4412-94CA-CF695F637B7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAC1AA06-483E-4412-94CA-CF695F637B7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAC1AA06-483E-4412-94CA-CF695F637B7C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {84D16C62-F8B1-4792-9AAA-D969278027BE}
+	EndGlobalSection
+EndGlobal

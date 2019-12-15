@@ -1,0 +1,277 @@
+﻿<UserControl x:Class="TheMagnificentPresentation.Views.StatsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TheMagnificentPresentation.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:cal="http://www.caliburnproject.org"
+             mc:Ignorable="d" 
+             MinHeight="450" d:DesignWidth="800">
+    <Grid>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0"></ColumnDefinition>
+                <ColumnDefinition Width="10"></ColumnDefinition>
+                <ColumnDefinition Width="40"></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="50"></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition Width="50"></ColumnDefinition>
+                <ColumnDefinition Width="200"></ColumnDefinition>
+                <ColumnDefinition Width="10"></ColumnDefinition>
+                <ColumnDefinition Width="0"></ColumnDefinition>
+                <ColumnDefinition Width="0"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="10"></RowDefinition>
+                <RowDefinition Height="0"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="10"></RowDefinition>
+                <RowDefinition Height="0"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="10"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="10"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <!-- Grid / Topp -->
+            <Grid Grid.Column="1" Grid.Row="1"
+                  Grid.ColumnSpan="3" Grid.RowSpan="1">
+                <Border  Background="white" BorderBrush="#FF0F5B90" 
+                         BorderThickness="0.3" CornerRadius="20,0,0,0">
+                </Border>
+            </Grid>
+
+            <Grid Grid.Column="3" Grid.Row="1">
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               FontFamily="Tahoma" Foreground="#FF0F5B90" FontSize="16"> 
+                        Statistik
+                </TextBlock>
+
+            </Grid>
+
+            <Grid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2">
+                <Border Background="#FF0F5B90" BorderBrush="#FF0F5B90"
+                        BorderThickness="0.3" CornerRadius="0,0,0,0">
+                </Border>
+                <materialDesign:PackIcon Kind="Finance" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Height="25" Width="25"></materialDesign:PackIcon>
+            </Grid>
+
+            <Grid
+                Grid.Column="4" Grid.Row="1"
+                  Grid.ColumnSpan="6" Grid.RowSpan="1">
+                <Border  Background="White" BorderBrush="#FF0F5B90" 
+                         BorderThickness="0.3" CornerRadius="0,0,0,0">
+                </Border>
+
+            </Grid>
+
+            <Grid Width="150" VerticalAlignment="Center" 
+                  Grid.Column="6" Grid.Row="1" >
+                <StackPanel>
+                    <ComboBox Background="White" Width="130" Height="30"
+                              HorizontalAlignment="Left" Margin="10,0,0,0" ItemsSource="{Binding SellerList}" IsEditable="True" IsReadOnly="True" Text="- Säljare -"
+                              cal:Message.Attach="[Event SelectionChanged] = [Action ChangeSelectedUser($this.SelectedItem)]" DisplayMemberPath="Fullname">
+                    </ComboBox>
+                </StackPanel>
+            </Grid>
+
+            <Grid Width="50" VerticalAlignment="Center"
+                  Grid.Column="5" Grid.Row="1">
+                <materialDesign:PackIcon Kind="AccountCircle" Foreground="#FF0F5B90" 
+                                             HorizontalAlignment="Right"
+                                             Height="25" Width="25">
+                </materialDesign:PackIcon>
+            </Grid>
+
+            <Grid Width="150" VerticalAlignment="Center" 
+                  Grid.Column="8" Grid.Row="1" >
+                <StackPanel>
+                    <ComboBox Background="White" Width="130" Height="30"
+                              HorizontalAlignment="Left" Margin="0 0" ItemsSource="{Binding YearList}" IsEditable="True" IsReadOnly="True" Text="- Period -"
+                              cal:Message.Attach="[Event SelectionChanged] = [Action ChangeSelectedYear($this.SelectedItem)]">
+                    </ComboBox>
+                </StackPanel>
+            </Grid>
+
+            <Grid Width="50" VerticalAlignment="Center"
+                  Grid.Column="7" Grid.Row="1">
+                <materialDesign:PackIcon Kind="Calendar" Foreground="#FF0F5B90" 
+                                             HorizontalAlignment="Right"
+                                             Height="25" Width="25" Margin="-10 0">
+                </materialDesign:PackIcon>
+            </Grid>
+
+            <!-- Grid / Botten -->
+            <Grid Grid.Column="4" Grid.Row="7"
+                  Grid.ColumnSpan="7" Grid.RowSpan="1">
+                <Border  Background="white" BorderBrush="#FF0F5B90"
+                         BorderThickness="0.3" CornerRadius="0,0,0,0">
+                </Border>
+
+            </Grid>
+            
+            <Grid Grid.Column="1" Grid.Row="7"
+                  Grid.ColumnSpan="3" Grid.RowSpan="1">
+                <Border  Background="white" BorderBrush="#FF0F5B90"
+                         BorderThickness="0.3">
+                </Border>
+
+            </Grid>
+
+            <!-- knappar -->
+            <Grid Grid.Column="6" Grid.Row="7"
+                  Grid.ColumnSpan="3" Grid.RowSpan="1">
+                <StackPanel Orientation="Horizontal" 
+                            HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <Button x:Name="PrintStatisticsOfYearAllUsers" Width="100" Height="30" 
+                            IsEnabled="{Binding PrintAllButtonEnabled}"
+                            Background="#FF0F5B90" BorderBrush="{x:Null}" 
+                            Padding="0" Foreground="White">
+                        <TextBlock Foreground="White">
+                            Skriv ut alla
+                        </TextBlock>
+                    </Button>
+                    <Button x:Name="PrintStatisticsOfYearOfSelectedUser" Width="100" Height="30" 
+                            IsEnabled="{Binding PrintSelectedButtonEnabled}"
+                            Background="#FF0F5B90" BorderBrush="{x:Null}" 
+                            Padding="0" Foreground="White">
+                        <TextBlock Foreground="White">
+                            Skriv ut vald
+                        </TextBlock>
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+            <!-- Grid / Center -->
+            <Grid Background="white"
+                  Grid.Column="1" Grid.Row="2"
+                  Grid.ColumnSpan="10" Grid.RowSpan="4">
+            </Grid>
+
+            <!-- lista -->
+            <Grid Grid.Column="2" Grid.Row="3" Background="White"
+                  Grid.ColumnSpan="7" Grid.RowSpan="2">
+                <DataGrid x:Name="SellingStatistics"
+                          Background="Transparent" 
+                          CanUserAddRows="False" 
+                          CanUserDeleteRows="False" 
+                          VerticalScrollBarVisibility="Auto"  
+                          IsReadOnly="True"
+                          AlternatingRowBackground="#FFEEEEEE"
+                          AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Månad" Binding="{Binding Path=Month}"/>
+                        <DataGridTextColumn Header="Andel barn" Binding="{Binding Path=Child}"/>
+                        <DataGridTextColumn Header="Andel vuxen" Binding="{Binding Path=Adult}"/>
+                        <DataGridTextColumn Header="Totalt" Binding="{Binding Path=Total}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </Grid>
+
+            <!-- Grid / Trend -->
+            <Grid
+                Grid.Column="4" Grid.Row="9"
+                  Grid.ColumnSpan="6" Grid.RowSpan="1">
+                <Border  Background="White" BorderBrush="#FF0F5B90" 
+                         BorderThickness="0.3" CornerRadius="0,0,0,0">
+                </Border>
+            </Grid>
+
+            <Grid Grid.Column="1" Grid.Row="10"
+                  Grid.ColumnSpan="9" Grid.RowSpan="1">
+                <Border  Background="white" BorderBrush="#FF0F5B90"
+                         BorderThickness="0.3" CornerRadius="0,0,0,0">
+                </Border>
+
+            </Grid>
+
+            <!-- knappar -->
+            <Grid Grid.Column="6" Grid.Row="10"
+                  Grid.ColumnSpan="3" Grid.RowSpan="1">
+                <StackPanel Orientation="Horizontal" 
+                            HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <Button x:Name="ExportTrend" Width="100" Height="30"
+                            IsEnabled="{Binding ExportTrendIsEnabled}"
+                            Background="#FF0F5B90" BorderBrush="{x:Null}" 
+                            Padding="0" Foreground="White">
+                        <TextBlock Foreground="White">
+                            Exportera
+                        </TextBlock>
+                    </Button>
+                </StackPanel>
+
+            </Grid>
+
+            <Grid Grid.Column="1" Grid.Row="9"
+                  Grid.ColumnSpan="3" Grid.RowSpan="1">
+                <Border  Background="white" BorderBrush="#FF0F5B90"
+                         BorderThickness="0.3" CornerRadius="20,0,0,20">
+                </Border>
+
+            </Grid>
+
+            <Grid Grid.Column="3" Grid.Row="9">
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               FontFamily="Tahoma" Foreground="#FF0F5B90" FontSize="16"> 
+                        Trend
+                </TextBlock>
+
+            </Grid>
+
+            <Grid Grid.Column="1" Grid.Row="9"
+                  Grid.ColumnSpan="2" Grid.RowSpan="1">
+                <Border  Background="#FF0F5B90" BorderBrush="#FF0F5B90" 
+                         BorderThickness="0" CornerRadius="0,0,0,0">
+                </Border>
+                <materialDesign:PackIcon Kind="TrendingUp" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Height="25" Width="25"></materialDesign:PackIcon>
+            </Grid>
+
+            <Grid Width="150" VerticalAlignment="Center" 
+                  Grid.Column="8" Grid.Row="9" >
+                <StackPanel>
+                    <ComboBox Background="White" Width="130" Height="30"
+                              HorizontalAlignment="Left" Margin="0 0" ItemsSource="{Binding YearList}" IsEditable="True" IsReadOnly="True" Text="- Period -"
+                              cal:Message.Attach="[Event SelectionChanged] = [Action ChangeSelectedTrendYear($this.SelectedItem)]">
+                    </ComboBox>
+                </StackPanel>
+            </Grid>
+
+            <Grid Width="50" VerticalAlignment="Center"
+                  Grid.Column="7" Grid.Row="9">
+                <materialDesign:PackIcon Kind="Calendar" Foreground="#FF0F5B90" 
+                                             HorizontalAlignment="Right"
+                                             Height="25" Width="25" Margin="-10 0">
+                </materialDesign:PackIcon>
+            </Grid>
+
+
+            <Grid Width="150" VerticalAlignment="Center" 
+                  Grid.Column="6" Grid.Row="9" >
+                <StackPanel>
+                    <ComboBox Background="White" Width="130" Height="30"
+                              HorizontalAlignment="Left" Margin="10,0,0,0" ItemsSource="{Binding SellerList}" IsEditable="True" IsReadOnly="True" Text="- Säljare -"
+                              cal:Message.Attach="[Event SelectionChanged] = [Action ChangeSelectedTrendUser($this.SelectedItem)]" DisplayMemberPath="Fullname">
+                    </ComboBox>
+                </StackPanel>
+            </Grid>
+
+            <Grid Width="50" VerticalAlignment="Center"
+                  Grid.Column="5" Grid.Row="9">
+                <materialDesign:PackIcon Kind="AccountCircle" Foreground="#FF0F5B90" 
+                                             HorizontalAlignment="Right"
+                                             Height="25" Width="25">
+                </materialDesign:PackIcon>
+            </Grid>
+
+        </Grid>
+    </Grid>
+</UserControl>

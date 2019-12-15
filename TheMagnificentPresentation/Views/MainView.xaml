@@ -1,0 +1,360 @@
+﻿<Window x:Class="TheMagnificentPresentation.Views.MainView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TheMagnificentPresentation.Views"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             Title="MainView"  
+             MinWidth="1024"
+             MinHeight="750"
+             MaxHeight="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenHeightKey}}"
+             ResizeMode="CanResizeWithGrip" 
+             WindowState="Maximized" 
+             WindowStartupLocation="CenterScreen" 
+             WindowStyle="None" 
+             AllowsTransparency="True">
+
+    <Window.Resources>
+    
+        <Storyboard x:Key="MenuOpen">
+            <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ButtonOpenMenu" Storyboard.TargetProperty="(UIElement.Visibility)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Collapsed}"/>
+            </ObjectAnimationUsingKeyFrames>
+            
+            <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ButtonCloseMenu" Storyboard.TargetProperty="(UIElement.Visibility)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="50" Value="50" />
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="200" />
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="MenuClose">
+            <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ButtonCloseMenu" Storyboard.TargetProperty="(UIElement.Visibility)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Collapsed}"/>
+            </ObjectAnimationUsingKeyFrames>
+
+            <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ButtonOpenMenu" Storyboard.TargetProperty="(UIElement.Visibility)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="200" />
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="50" />
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="MenuCloseFromList">
+            <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ButtonCloseMenu" Storyboard.TargetProperty="(UIElement.Visibility)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Collapsed}"/>
+            </ObjectAnimationUsingKeyFrames>
+
+            <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ButtonOpenMenu" Storyboard.TargetProperty="(UIElement.Visibility)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="50" />
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="50" />
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <!-- används för att ändra ikon när app.fönstret maximeras eller normaliseras i storlek -->
+        <materialDesign:PackIcon x:Key="MaxWindow" Kind="CheckboxMultipleBlankOutline" Background="{x:Null}" BorderBrush="{x:Null}" Height="15" Width="15"/>
+        <materialDesign:PackIcon x:Key="MinWindow" Kind="CropSquare" Height="15" Width="15"/>
+    </Window.Resources>
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpenMenu">
+            <BeginStoryboard Storyboard="{StaticResource MenuOpen}" />
+        </EventTrigger>
+
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonCloseMenu">
+            <BeginStoryboard Storyboard="{StaticResource MenuClose}" />
+        </EventTrigger>
+
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="MainMenu">
+            <BeginStoryboard Storyboard="{StaticResource MenuCloseFromList}" />
+
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Grid>
+        <!-- Main Contentcontrol, här i öppnas alla fönster från meny -->
+        <Grid  Margin="50 50 0 0 " Background="#FFEEEEEE">
+            <Grid x:Name="MainWindowGrid" VerticalAlignment="Top">
+                <ContentControl x:Name="ActiveItem" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"></ContentControl>
+            </Grid>
+        </Grid>
+
+        <!-- Knappar för att minimera, maximera och avsluta applikationen-->
+        <Grid Height="50" VerticalAlignment="Top" Background="#FF0F5B90" Grid.ColumnSpan="2" MouseDown="Grid_MouseDown">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0" Height="35">
+
+                <Button x:Name="MinWindow" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="White" Click="MinimizeWindow_Click" >
+                    <materialDesign:PackIcon Kind="Minus"/>
+                </Button>
+
+                <Button x:Name="ExpandWindow" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="White" Click="ExpandWindow_Click" >
+                    <DynamicResource ResourceKey="MaxWindow"/>
+                </Button>
+
+                <Button x:Name="CloseWindow" Width="30" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="White" >
+                    <materialDesign:PackIcon Kind="Close" />
+                </Button>
+            </StackPanel>
+
+            <Grid VerticalAlignment="Top" HorizontalAlignment="Center" Height="40" Width="200" Margin="16 13"  >
+                <TextBlock Foreground="White" HorizontalAlignment="Center" Text="Försäkringsbyrån" FontSize="16"/>
+            </Grid>
+        </Grid>
+
+        <!-- Knappar för att öppna/stänga meny, kopplade till triggers till animation -->
+        <Grid x:Name="GridMenu" Width="50" HorizontalAlignment="Left" Background="#FF0F5B90" Grid.ColumnSpan="2">
+            <StackPanel>
+                <Grid Height="50" Background="White">
+                    <Button x:Name="ButtonCloseMenu" 
+                            Background="{x:Null}" BorderBrush="{x:Null}" 
+                            Width="50" Height="50" 
+                            VerticalAlignment="Top" HorizontalAlignment="Right" 
+                            Visibility="Collapsed">
+
+                        <materialDesign:PackIcon Foreground="#FF0F5B90"  Kind="ArrowLeft" 
+                                                 Width="25" Height="25" Margin="-4 0" />
+                    </Button>
+
+                    <Button x:Name="ButtonOpenMenu" 
+                            Background="{x:Null}" BorderBrush="{x:Null}" 
+                            Width="50" Height="50" 
+                            VerticalAlignment="Top" HorizontalAlignment="Right" >
+
+                        <materialDesign:PackIcon Foreground="#FF0F5B90" Kind="Menu" 
+                                                 Width="25" Height="25" Margin="-4 0"/>
+                    </Button>
+                </Grid>
+
+                <!-- Menyknappar -->
+                <Grid Width="200">
+                    <ListBox x:Name="MainMenu" Foreground="White">
+
+                        <ListBoxItem Height="45" IsEnabled="{Binding ProfileEnabled}">
+                            <StackPanel  Margin="-8" Height="45">
+                                <Button x:Name="Profile" Opacity="1"
+                                        Background="{x:Null}" BorderBrush="{x:Null}" 
+                                        Width="200" Height="45">
+                                    <Grid HorizontalAlignment="Left" VerticalAlignment="Center" Margin="-16 0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50" />
+                                            <ColumnDefinition Width="150" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid Grid.Column="0">
+                                            <materialDesign:PackIcon Kind="AccountBox" 
+                                                                     HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                                     Width="25" Height="25" Margin="0 0"/>
+                                        </Grid>
+                                        <Grid Grid.Column="1">
+                                            <TextBlock VerticalAlignment="Center">Min Profil</TextBlock>
+                                        </Grid>
+                                    </Grid>
+                                </Button>
+                            </StackPanel>
+                        </ListBoxItem>
+
+                        <ListBoxItem Height="45" IsEnabled="{Binding InsurancesEnabled}">
+                            <StackPanel  Margin="-8" Height="45">
+                                <Button x:Name="InsuranceH" Opacity="1"
+                                        Background="{x:Null}" BorderBrush="{x:Null}" 
+                                        Width="200" Height="45">
+                                    <Grid HorizontalAlignment="Left" VerticalAlignment="Center" Margin="-16 0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50" />
+                                            <ColumnDefinition Width="150" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid Grid.Column="0">
+                                            <materialDesign:PackIcon Kind="AccountMultiple" 
+                                                                     HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                                     Width="25" Height="25" Margin="0 0"/>
+                                        </Grid>
+                                        <Grid Grid.Column="1">
+                                            <TextBlock VerticalAlignment="Center">Försäkringstagare</TextBlock>
+                                        </Grid>
+                                    </Grid>
+                                </Button>
+                            </StackPanel>
+                        </ListBoxItem>
+
+
+                        <ListBoxItem Height="45" IsEnabled="{Binding InsuranceDataEnabled}">
+                            <StackPanel  Margin="-8" Height="45">
+                                <Button x:Name="Insurance" Opacity="1"
+                                        Background="{x:Null}" BorderBrush="{x:Null}" 
+                                        Width="200" Height="45">
+                                    <Grid HorizontalAlignment="Left" VerticalAlignment="Center" Margin="-16 0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50" />
+                                            <ColumnDefinition Width="150" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid Grid.Column="0">
+                                            <materialDesign:PackIcon Kind="Buffer" 
+                                                                     HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                                     Width="25" Height="25" Margin="0 0"/>
+                                        </Grid>
+                                        <Grid Grid.Column="1">
+                                            <TextBlock VerticalAlignment="Center">Försäkringar</TextBlock>
+                                        </Grid>
+                                    </Grid>
+                                </Button>
+                            </StackPanel>
+                        </ListBoxItem>
+
+                        <ListBoxItem Height="45" IsEnabled="{Binding BaseValuesEnabled}">
+                            <StackPanel  Margin="-8" Height="45">
+                                <Button x:Name="DeValues" Opacity="1"
+                                        Background="{x:Null}" BorderBrush="{x:Null}" 
+                                        Width="200" Height="45">
+                                    <Grid HorizontalAlignment="Left" VerticalAlignment="Center" Margin="-16 0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50" />
+                                            <ColumnDefinition Width="150" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid Grid.Column="0">
+                                            <materialDesign:PackIcon Kind="FilePlus" 
+                                                                     HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                                     Width="25" Height="25" Margin="0 0"/>
+                                        </Grid>
+                                        <Grid Grid.Column="1">
+                                            <TextBlock VerticalAlignment="Center">Grundvärden</TextBlock>
+                                        </Grid>
+                                    </Grid>
+                                </Button>
+                            </StackPanel>
+                        </ListBoxItem>
+
+                        <ListBoxItem Height="45" IsEnabled="{Binding StatisticsEnabled}">
+                            <StackPanel  Margin="-8" Height="45">
+                                <Button x:Name="StatsView" Opacity="1"
+                                        Background="{x:Null}" BorderBrush="{x:Null}" 
+                                        Width="200" Height="45">
+                                    <Grid HorizontalAlignment="Left" VerticalAlignment="Center" Margin="-16 0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50" />
+                                            <ColumnDefinition Width="150" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid Grid.Column="0">
+                                            <materialDesign:PackIcon Kind="Finance" 
+                                                                     HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                                     Width="25" Height="25" Margin="0 0"/>
+                                        </Grid>
+                                        <Grid Grid.Column="1">
+                                            <TextBlock VerticalAlignment="Center">Statistik</TextBlock>
+                                        </Grid>
+                                    </Grid>
+                                </Button>
+                            </StackPanel>
+                        </ListBoxItem>
+
+                        <ListBoxItem Height="45" IsEnabled="{Binding UsersEnabled}">
+                            <StackPanel  Margin="-8" Height="45">
+                                <Button x:Name="UserView" Opacity="1"
+                                        Background="{x:Null}" BorderBrush="{x:Null}" 
+                                        Width="200" Height="45">
+                                    <Grid HorizontalAlignment="Left" VerticalAlignment="Center" Margin="-16 0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50" />
+                                            <ColumnDefinition Width="150" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid Grid.Column="0">
+                                            <materialDesign:PackIcon Kind="AccountPlus" 
+                                                                     HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                                     Width="25" Height="25" Margin="0 0"/>
+                                        </Grid>
+                                        <Grid Grid.Column="1">
+                                            <TextBlock VerticalAlignment="Center">Användare</TextBlock>
+                                        </Grid>
+                                    </Grid>
+                                </Button>
+                            </StackPanel>
+                        </ListBoxItem>
+
+                        <ListBoxItem Height="45" IsEnabled="{Binding CommissionEnabled}">
+                            <StackPanel  Margin="-8" Height="45">
+                                <Button x:Name="ProView" Opacity="1"
+                                        Background="{x:Null}" BorderBrush="{x:Null}" 
+                                        Width="200" Height="45">
+                                    <Grid HorizontalAlignment="Left" VerticalAlignment="Center" Margin="-16 0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50" />
+                                            <ColumnDefinition Width="150" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid Grid.Column="0">
+                                            <materialDesign:PackIcon Kind="AccountCheck" 
+                                                                     HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                                     Width="25" Height="25" Margin="0 0"/>
+                                        </Grid>
+                                        <Grid Grid.Column="1">
+                                            <TextBlock VerticalAlignment="Center">Provision</TextBlock>
+                                        </Grid>
+                                    </Grid>
+                                </Button>
+                            </StackPanel>
+                        </ListBoxItem>
+
+                        <ListBoxItem Height="45" IsEnabled="{Binding PrintEnabled}">
+                            <StackPanel  Margin="-8" Height="45">
+                                <Button x:Name="PrintButton" Opacity="1"
+                                        Background="{x:Null}" BorderBrush="{x:Null}" 
+                                        Width="200" Height="45">
+                                    <Grid HorizontalAlignment="Left" VerticalAlignment="Center" Margin="-16 0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50" />
+                                            <ColumnDefinition Width="150" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid Grid.Column="0">
+                                            <materialDesign:PackIcon Kind="Printer" 
+                                                                     HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                                     Width="25" Height="25" Margin="0 0"/>
+                                        </Grid>
+                                        <Grid Grid.Column="1">
+                                            <TextBlock VerticalAlignment="Center">Skriv ut prospekt</TextBlock>
+                                        </Grid>
+                                    </Grid>
+                                </Button>
+                            </StackPanel>
+                        </ListBoxItem>
+                    </ListBox>
+                </Grid>
+            </StackPanel>
+
+            <!-- Knapp: Logga ut-->
+            <Grid Width="200" VerticalAlignment="Bottom">
+                <ListBoxItem Height="45">
+                    <StackPanel  Margin="-8" Height="45">
+                        <Button x:Name="LogOut" Opacity="1"
+                                        Background="{x:Null}" BorderBrush="{x:Null}" 
+                                        Width="200" Height="45">
+                            <Grid HorizontalAlignment="Left" VerticalAlignment="Center" Margin="-16 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition Width="150" />
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <materialDesign:PackIcon Kind="ExitToApp" 
+                                                                     HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                                     Width="25" Height="25" Margin="0 0"/>
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <TextBlock VerticalAlignment="Center">Logga ut</TextBlock>
+                                </Grid>
+                            </Grid>
+                        </Button>
+                    </StackPanel>
+                </ListBoxItem>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

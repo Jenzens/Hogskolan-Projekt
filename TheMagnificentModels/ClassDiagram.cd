@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TheMagnificentModels.CommisionValues" Collapsed="true">
+    <Position X="25.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABACAAAAAAAIAAAAAAAMAAAAAAAQAAAAAAAACAAEAAA=</HashCode>
+      <FileName>CommisionValues.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TheMagnificentModels.CompanyContactData">
+    <Position X="0.5" Y="10.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAACAAAAAIAAAAQAAAAAAAAAGAAAAAAAAAAAA=</HashCode>
+      <FileName>CompanyContactData.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="CompanyData" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="TheMagnificentModels.CompanyData">
+    <Position X="4" Y="10" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAYAAAACEAAAAAAAAAQEQAGggAAAEAICAAAQBAAEQ=</HashCode>
+      <FileName>CompanyData.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ZipCity" />
+      <Property Name="CompanyContactData" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="InsuranceTaker" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="TheMagnificentModels.DatabaseContext" Collapsed="true">
+    <Position X="23.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAKISAAAAAAYAgAAQAAAAGgoAAACAAAIAAAAAAFA=</HashCode>
+      <FileName>DatabaseContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TheMagnificentModels.Insurance">
+    <Position X="17.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAIAAAAAAAAAAAIAAAAjAAAAAAAAEAA=</HashCode>
+      <FileName>Insurance.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Insurance1" />
+      <Property Name="Insurance2" />
+      <Property Name="InsuranceBaseValues" />
+      <Property Name="InsuranceApplicationRows" />
+      <Property Name="InsuranceAcqVariables" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="TheMagnificentModels.InsuranceAcqVariables">
+    <Position X="17.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAgAAAAAAAAAAAAAAEAAAAAEAAEAA=</HashCode>
+      <FileName>InsuranceAcqVariables.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Insurance" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TheMagnificentModels.InsuranceApplicationRow">
+    <Position X="14.5" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AIAAAIAoAAAAAIAAgAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>InsuranceApplicationRow.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Insurance" />
+      <Property Name="Sale" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TheMagnificentModels.InsuranceBaseValues">
+    <Position X="20.75" Y="3.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AIACAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAEAAEAA=</HashCode>
+      <FileName>InsuranceBaseValues.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Insurance" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TheMagnificentModels.InsuranceFixedComision">
+    <Position X="10.5" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAQIAgAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InsuranceFixedComision.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Sale" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TheMagnificentModels.InsuranceObject">
+    <Position X="13.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAIACAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InsuranceObject.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="FirstPerson" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Sale" />
+      <Property Name="PersonData" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="TheMagnificentModels.InsuranceTaker">
+    <Position X="10.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAIASAAAAIAAAAAAAACAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>InsuranceTaker.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="GetPersonData" />
+      <Property Name="GetCompanyData" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Sale" />
+      <Property Name="PersonProspectContact" />
+      <Property Name="PersonData" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="TheMagnificentModels.PaymentTypes">
+    <Position X="7.75" Y="9.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIBAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>PaymentTypes.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Sale" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="TheMagnificentModels.PersonData">
+    <Position X="14.5" Y="9.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAQACEAAAAIAAAAQEQAGAgAAAACIAgAgQBAAFQ=</HashCode>
+      <FileName>PersonData.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ZipCity" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="PersonProspectContact" />
+      <Property Name="InsuranceObject" />
+      <Property Name="InsuranceTaker" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="TheMagnificentModels.PersonProspectContact">
+    <Position X="11" Y="13.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAAACAAAAAAAAAAAAAAAACAAgAAACAAAAAAAAAAA=</HashCode>
+      <FileName>PersonProspectContact.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="PersonData" />
+      <Property Name="InsuranceTaker" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TheMagnificentModels.ProspectData">
+    <Position X="8.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ProspectData.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="InsuranceSale" />
+      <Property Name="Person" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TheMagnificentModels.Roles">
+    <Position X="4.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAEAAAAAAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Roles.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Users" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="TheMagnificentModels.Sale">
+    <Position X="11" Y="5.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ACACACMgIAAQAAAAIAAQAIKACAgAAAAAAAAAAGAAIBA=</HashCode>
+      <FileName>Sale.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Users" />
+      <Property Name="SecondAPItem" />
+      <Property Name="PaymentTypes" />
+      <Property Name="FirstAPItem" />
+      <Property Name="InsuranceObject" />
+      <Property Name="InsuranceFixedComision" />
+      <Property Name="InsuranceTaker" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="InsuranceApplicationRows" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="TheMagnificentModels.Users">
+    <Position X="7.25" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAMQAMAAAKIAgAAIAAAAQEABAwAAAAACYAAAAQAAAEU=</HashCode>
+      <FileName>Users.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ZipCity" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Sale" />
+      <Property Name="Roles" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="TheMagnificentModels.VacationRate" Collapsed="true">
+    <Position X="25.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAEAAAAAAAAAAABAAAAAAQAAAAAAEAAAAA=</HashCode>
+      <FileName>VacationRate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TheMagnificentModels.ZipCity">
+    <Position X="7.75" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACACAAAAAAAIAAAAAAAAAAAAAACAAAAAAQAAAAA=</HashCode>
+      <FileName>ZipCity.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Users" />
+      <Property Name="PersonData" />
+      <Property Name="CompanyData" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="TheMagnificentModels.Utilities.BusinessManager" Collapsed="true">
+    <Position X="23.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEACAAAAAIAAAgAkAIAgAYAAAAAAMAAQACAAAAA=</HashCode>
+      <FileName>Utilities\BusinessManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TheMagnificentModels.Utilities.CommissionManager" Collapsed="true">
+    <Position X="27" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAIAAgAAIAAAABAAAQAAAAAAAAAAEAAAAAAAAAAAQA=</HashCode>
+      <FileName>Utilities\CommissionManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TheMagnificentModels.Utilities.DataManager" Collapsed="true">
+    <Position X="25.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>NICAIGhAAQBAQECAAgAAgIAgBQAZKGGk0gCABKwAAAE=</HashCode>
+      <FileName>Utilities\DataManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TheMagnificentModels.Utilities.DocumentManager" Collapsed="true">
+    <Position X="27" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAACAgAAAAAAAAACAAgAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Utilities\DocumentManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TheMagnificentModels.Utilities.SellingStatistics" Collapsed="true">
+    <Position X="23.5" Y="2.5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="TheMagnificentModels.Utilities.SellingStatistics.AcqValues" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Utilities\SellingStatistics.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="TheMagnificentModels.Utilities.SellingStatistics.Trend" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Utilities\SellingStatistics.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="TheMagnificentModels.Utilities.SellingStatistics.Earnings" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Utilities\SellingStatistics.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="TheMagnificentModels.Utilities.SellingStatistics.TrendLine" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Utilities\SellingStatistics.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Struct Name="TheMagnificentModels.Utilities.SellingStatistics.UserMonthlySales" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Utilities\SellingStatistics.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="TheMagnificentModels.Utilities.SellingStatistics.SalePerMonth" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Utilities\SellingStatistics.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Class Name="TheMagnificentModels.Utilities.SellingStatistics.StatisticSalesPerMonth" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Utilities\SellingStatistics.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAEAAEIAACAICAAAAgAAAAAAAAQAEAAACAwAAAAAQAA=</HashCode>
+      <FileName>Utilities\SellingStatistics.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

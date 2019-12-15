@@ -1,0 +1,131 @@
+﻿<UserControl x:Class="TheMagnificentPresentation.Views.UProvisionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TheMagnificentPresentation.Views"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             MinHeight="450" d:DesignWidth="800" Background="Transparent">
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0"></ColumnDefinition>
+                <ColumnDefinition Width="10"></ColumnDefinition>
+                <ColumnDefinition Width="40"></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="50"></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition Width="50"></ColumnDefinition>
+                <ColumnDefinition Width="200"></ColumnDefinition>
+                <ColumnDefinition Width="10"></ColumnDefinition>
+                <ColumnDefinition Width="0"></ColumnDefinition>
+                <ColumnDefinition Width="0"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="10"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="400"></RowDefinition>
+                <RowDefinition Height="10"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="0"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <!-- Grid / Topp -->
+            <Grid Grid.Column="1" Grid.Row="1"
+                  Grid.ColumnSpan="3" Grid.RowSpan="1">
+                <Border  Background="white" BorderBrush="#FF0F5B90" 
+                         BorderThickness="0.3" CornerRadius="20,0,0,0">
+                </Border>
+            </Grid>
+
+            <Grid Grid.Column="3" Grid.Row="1">
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" 
+                           FontFamily="Tahoma" Foreground="#FF0F5B90" FontSize="16"> 
+                        Provision
+                </TextBlock>
+
+            </Grid>
+
+            <Grid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2">
+                <Border Background="#FF0F5B90" BorderBrush="#FF0F5B90"
+                        BorderThickness="0.3" CornerRadius="0,0,0,0">
+                </Border>
+                <materialDesign:PackIcon Kind="AccountBox" Foreground="White" 
+                                         VerticalAlignment="Center" HorizontalAlignment="Center" 
+                                         Height="25" Width="25">
+
+                </materialDesign:PackIcon>
+            </Grid>
+
+            <Grid
+                Grid.Column="4" Grid.Row="1"
+                  Grid.ColumnSpan="6" Grid.RowSpan="1">
+                <Border  Background="White" BorderBrush="#FF0F5B90" 
+                         BorderThickness="0.3" CornerRadius="0,0,0,0">
+                </Border>
+
+            </Grid>
+
+            <Grid Grid.Column="4" Grid.Row="7"
+                  Grid.ColumnSpan="6" Grid.RowSpan="1">
+                <Border  Background="white" BorderBrush="#FF0F5B90"
+                         BorderThickness="0.3" CornerRadius="0,0,0,0">
+                </Border>
+
+            </Grid>
+
+            <Grid Grid.Column="1" Grid.Row="7"
+                  Grid.ColumnSpan="3" Grid.RowSpan="1" Background="White">
+                <Border  Background="white" BorderBrush="#FF0F5B90"
+                         BorderThickness="0.3" CornerRadius="0,0,0,0">
+                </Border>
+            </Grid>
+
+            <Grid Grid.Column="6" Grid.Row="7"
+                  Grid.ColumnSpan="3" Grid.RowSpan="1">
+                <StackPanel Orientation="Horizontal" 
+                            HorizontalAlignment="Right" VerticalAlignment="Center">
+
+                </StackPanel>
+            </Grid>
+
+            <!-- Grid / Center-->
+            <Grid Background="white"
+                  Grid.Column="1" Grid.Row="2"
+                  Grid.ColumnSpan="9" Grid.RowSpan="4">
+            </Grid>
+
+            <!-- Grid / Bottom -->
+            <Grid Background="white"
+                  Grid.Column="1" Grid.Row="6"
+                  Grid.ColumnSpan="9" Grid.RowSpan="1">
+                <Border  Background="white" BorderBrush="#FF0F5B90"
+                         BorderThickness="0.3" CornerRadius="0,0,0,0">
+                </Border>
+            </Grid>
+
+            <!-- lista -->
+            <Grid Grid.Column="2" Grid.Row="3" Background="White"
+                  Grid.ColumnSpan="7" Grid.RowSpan="2" >
+                <DataGrid x:Name="InsuranceH"
+                          AlternatingRowBackground="#FFEEEEEE"
+                          Background="Transparent" 
+                          CanUserAddRows="False" CanUserDeleteRows="False" 
+                          VerticalScrollBarVisibility="Auto"  IsReadOnly="True" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Kalenderår" Binding="{Binding Path=IdNumber}"/>
+                        <DataGridTextColumn Header="Totalt min ack. värde" Binding="{Binding Path=Name}"/>
+                        <DataGridTextColumn Header="Totalt max ack. värde" Binding="{Binding Path=Adress}"/>
+                        <DataGridTextColumn Header="Provision andel barn" Binding="{Binding Path=Adress}"/>
+                        <DataGridTextColumn Header="Provision andel vuxen" Binding="{Binding Path=Adress}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

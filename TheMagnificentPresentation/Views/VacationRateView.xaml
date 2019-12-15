@@ -1,0 +1,203 @@
+﻿<UserControl x:Class="TheMagnificentPresentation.Views.VacationRateView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TheMagnificentPresentation.Views"
+             xmlns:cal="http://www.caliburnproject.org"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             MinHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0"></ColumnDefinition>
+                <ColumnDefinition Width="10"></ColumnDefinition>
+                <ColumnDefinition Width="40"></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="50"></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition Width="50"></ColumnDefinition>
+                <ColumnDefinition Width="200"></ColumnDefinition>
+                <ColumnDefinition Width="10"></ColumnDefinition>
+                <ColumnDefinition Width="0"></ColumnDefinition>
+                <ColumnDefinition Width="0"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="10"></RowDefinition>
+                <RowDefinition Height="200"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="0"></RowDefinition>
+                <RowDefinition Height="0"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="0"></RowDefinition>
+            </Grid.RowDefinitions>
+            
+            <!-- Grid / Topp -->
+            <Grid Grid.Column="1" Grid.Row="1"
+                  Grid.ColumnSpan="3" Grid.RowSpan="1">
+                <Border  Background="white" BorderBrush="#FF0F5B90" 
+                         BorderThickness="0.3" CornerRadius="20,0,0,0">
+                </Border>
+            </Grid>
+
+            <Grid Grid.Column="3" Grid.Row="1">
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               FontFamily="Tahoma" Foreground="#FF0F5B90" FontSize="16"> 
+                        Semesterersättning
+                </TextBlock>
+
+            </Grid>
+
+            <Grid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2">
+                <Border Background="#FF0F5B90" BorderBrush="#FF0F5B90"
+                        BorderThickness="0.3" CornerRadius="0,0,0,0">
+                </Border>
+                <materialDesign:PackIcon Kind="FilePlus" 
+                                         Foreground="White" VerticalAlignment="Center" 
+                                         HorizontalAlignment="Center" Height="25" Width="25">
+
+                </materialDesign:PackIcon>
+            </Grid>
+
+            <Grid
+                Grid.Column="4" Grid.Row="1"
+                  Grid.ColumnSpan="7" Grid.RowSpan="1">
+                <Border  Background="White" BorderBrush="#FF0F5B90" 
+                         BorderThickness="0.3" CornerRadius="0,0,0,0">
+                </Border>
+
+            </Grid>
+
+            <!-- Grid / Botten -->
+            <Grid Grid.Column="4" Grid.Row="7"
+                  Grid.ColumnSpan="7" Grid.RowSpan="1" Background="white">
+                <Border  Background="white" BorderBrush="#FF0F5B90"
+                         BorderThickness="0.3" CornerRadius="0,0,0,0">
+                </Border>
+            </Grid>
+
+            <Grid Grid.Column="1" Grid.Row="7"
+                  Grid.ColumnSpan="3" Grid.RowSpan="1">
+                <Border  Background="white" BorderBrush="#FF0F5B90"
+                         BorderThickness="0.3">
+                </Border>
+            </Grid>
+
+            <!-- Grid / Center -->
+            <Grid Background="white"
+                  Grid.Column="1" Grid.Row="2"
+                  Grid.ColumnSpan="10" Grid.RowSpan="5">
+            </Grid>
+
+            <!-- Grid - Center / Visar formulär -->
+            <Grid Grid.Column="2" Grid.Row="3" Background="White"
+                  Grid.ColumnSpan="7" Grid.RowSpan="2" HorizontalAlignment="Left">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"></ColumnDefinition>
+                    <ColumnDefinition Width="140"></ColumnDefinition>
+                    <ColumnDefinition Width="40"></ColumnDefinition>
+                    <ColumnDefinition Width="140"></ColumnDefinition>
+                    <ColumnDefinition Width="20"></ColumnDefinition>
+                    <ColumnDefinition Width="140"></ColumnDefinition>
+                    <ColumnDefinition Width="20"></ColumnDefinition>
+                    <ColumnDefinition Width="140"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"></RowDefinition>
+                    <RowDefinition Height="25"></RowDefinition>
+                    <RowDefinition Height="25"></RowDefinition>
+                    <RowDefinition Height="25"></RowDefinition>
+                    <RowDefinition Height="25"></RowDefinition>
+                    <RowDefinition Height="25"></RowDefinition>
+                    <RowDefinition Height="25"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <!-- Kalenderår -->
+                <Label Grid.Row="0" Grid.Column="1" Content="Kalenderår:" HorizontalAlignment="Left" />
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding VacationRate.StartDate, Mode=TwoWay}" Margin="-2,0,2.2,0" Width="150" HorizontalAlignment="Left"/>
+
+                <!-- Totalt min ack. värde  -->
+                <Label Grid.Row="2" Grid.Column="1" Content="Semesterersättning %:" HorizontalAlignment="Left"/>
+                <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding VacationRate.VacationRate1, Mode=TwoWay}" Margin="-2,0,2.2,0" Width="150" HorizontalAlignment="Left"/>
+
+                <!-- Totalt max ack. värde -->
+                <Label Grid.Row="2" Grid.Column="3" Content="Avdrag/Marginal %:" HorizontalAlignment="Left"/>
+                <TextBox Grid.Row="3" Grid.Column="3" Text="{Binding VacationRate.VacationVariable, Mode=TwoWay}" Margin="-2,0,2.2,0" Width="150" HorizontalAlignment="Left"/>
+
+                <!-- Provision andel barn-->
+
+                <!-- Provision andel vuxen-->
+
+            </Grid>
+
+            <!-- lista -->
+            <Grid Grid.Column="2" Grid.Row="4"
+                  Grid.ColumnSpan="8" Grid.RowSpan="2">
+
+                <DataGrid x:Name="VacationRates"
+                          Background="Transparent"
+                          AutoGenerateColumns="False"
+                          AlternatingRowBackground="#FFEEEEEE"
+                          CanUserAddRows="False" CanUserDeleteRows="False" 
+                          VerticalScrollBarVisibility="Auto"  IsReadOnly="True"
+                          SelectedItem="{Binding SelectedVacationRate, Mode=TwoWay}"
+                          cal:Message.Attach="[Event MouseDoubleClick] = [Action RowSelect_DoubleClick()]">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="År" Binding="{Binding Path=StartDate}"/>
+                        <DataGridTextColumn Header="Ersättning %" Binding="{Binding Path=VacationRate1}"/>
+                        <DataGridTextColumn Header="Marginal %" Binding="{Binding Path=VacationVariable}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+
+
+            <!-- knappar -->
+            <Grid Grid.Column="8" Grid.Row="3"
+                  Grid.ColumnSpan="1" Grid.RowSpan="1">
+                <StackPanel Orientation="Horizontal" 
+                            HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 10">
+                    <Button x:Name="CancelButton" Width="100" Height="30"
+                            IsEnabled="{Binding CancelBtnEnabled}"
+                            Background="#FF0F5B90" BorderBrush="{x:Null}" 
+                            Padding="0" Foreground="White">
+                        <TextBlock Foreground="White">
+                            Avbryt
+                        </TextBlock>
+                    </Button>
+                    <Button x:Name="SaveButton" Width="100" Height="30"
+                            IsEnabled="{Binding SaveBtnEnabled}"
+                            Background="#FF0F5B90" BorderBrush="{x:Null}" 
+                            Padding="0" Foreground="White">
+                        <TextBlock Foreground="White">
+                            Spara
+                        </TextBlock>
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Column="8" Grid.Row="7"
+                  Grid.ColumnSpan="1" Grid.RowSpan="1">
+                <StackPanel Orientation="Horizontal" 
+                            HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 10">
+
+                    <Button x:Name="EditButton" Width="100" Height="30"
+                            IsEnabled="{Binding EditBtnEnabled}"
+                            Background="#FF0F5B90" BorderBrush="{x:Null}" 
+                            Padding="0" Foreground="White">
+                        <TextBlock Foreground="White">
+                            Redigera
+                        </TextBlock>
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+        </Grid>
+    </Grid>
+</UserControl>
